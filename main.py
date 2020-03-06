@@ -1,11 +1,6 @@
-from dataclasses import dataclass, field
-import time
-from random import shuffle, random, randint
-import json
-
-import vk_api
-
-from config import cfg
+from funcs import *
+from structs import *
+from vk_buttons import *
 
 # токен группы
 vk = vk_api.VkApi(token=cfg.get("vk", "token"))
@@ -13,132 +8,8 @@ vk = vk_api.VkApi(token=cfg.get("vk", "token"))
 # переменная для подсчета кол-во боев(зачем она?)
 countOfBattles = 0
 
-debagFlag = [True]
-debag_func = lambda st, flag=debagFlag: print(st) if flag[0] else st
+
 subgects_key = {1: "inf", 2: "mat", 3: "phys"}
-
-
-# структура для хранения информации о текущих битвах(так удобнее)
-@dataclass  # ничего подобного, оно должно реализовываться по-другому
-class Battle:
-    id1: int
-    id2: int
-    sub: int
-    div: int
-    questions: list
-    answers: list
-    point1: int = 0
-    point2: int = 0
-    counter1: int = 0
-    counter2: int = 0
-
-
-# функция для генерации списка из 5 рандомных чисел
-# теперь не нужна (вроде)
-def randomlist5():
-    lst = []
-    while len(lst) < 5:
-        t = randint(1, 10)
-        if t not in lst:
-            lst.append(t)
-    return lst
-
-
-# функция для генерации вопросов и ответов(параша)
-def generatequestion(deep=0, sub=1, div="1"):
-    question = []
-    answers = []
-    debag_func("инициализация списков **generatequestion")
-    # s = randomlist5()
-    file = open('questions/question_' + str(subgects_key[int(sub)]) + '_' + str(div) + '.txt', encoding='utf-8')
-    # s = randomlist5()
-    file = open('question.txt', encoding='utf-8')
-    text = file.readlines()
-    file.close()
-    shuffle(text)
-    for i in text[:5]:
-        temp = i[:-1]  # убираем \n
-        debag_func(str([temp]) + " - случайный вопрос из файла **generatequestion")
-        if temp[-1] == '.':
-            answers.append(True)
-            question.append(temp[:-1])
-        else:
-            answers.append(False)
-            question.append(temp)
-    if question == [] and deep < 10:
-        question, answers = generatequestion(deep=deep + 1, sub=sub, div=div)
-    return question, answers
-
-
-# доп функция для кнопок (так удобнее)
-def create_button(label, color, payload=''):
-    return {
-        "action": {
-            "type": "text",
-            "payload": json.dumps(payload),
-            "label": label
-        },
-        "color": color
-    }
-
-
-# кнопки выбора предметов
-buttonsItemsChoice = {
-    "one_time": True,
-    "buttons": [
-        [create_button('Информатика', 'primary')],
-        [create_button('Математика', 'primary')],
-        [create_button('Физика', 'primary')]
-    ]}
-buttonsItemsChoice = json.dumps(buttonsItemsChoice, ensure_ascii=False).encode('utf-8')
-buttonsItemsChoice = str(buttonsItemsChoice.decode('utf-8'))
-
-# кнопки выбора дивизиона
-DIVISIONS = ["Div 1", "Div 2", "Div 3"]
-buttonsDivChoice = {
-    "one_time": True,
-    "buttons": [
-        [
-            create_button(div, 'primary')
-            for div in DIVISIONS
-        ],
-        [
-            create_button('К предметам', 'secondary')
-        ]
-    ]}
-buttonsDivChoice = json.dumps(buttonsDivChoice, ensure_ascii=False).encode('utf-8')
-buttonsDivChoice = str(buttonsDivChoice.decode('utf-8'))
-
-# кнопка возрата
-buttonReturn = {
-    "one_time": True,
-    "buttons": [
-        [create_button('Остановить поиск', 'secondary')]
-    ]}
-buttonReturn = json.dumps(buttonReturn, ensure_ascii=False).encode('utf-8')
-buttonReturn = str(buttonReturn.decode('utf-8'))
-
-# кнопки выбора
-buttonsChoice = {
-    "one_time": True,
-    "buttons": [
-        [
-            (create_button('Нет', 'negative')),
-            (create_button('Да', 'positive'))
-        ]
-        # // Кнопка выхода из боя("сдаться")
-    ]}
-buttonsChoice = json.dumps(buttonsChoice, ensure_ascii=False).encode('utf-8')
-buttonsChoice = str(buttonsChoice.decode('utf-8'))
-
-# Словарь состояний
-statusID = {}
-
-# Массив очереди
-search = [[-1] * 3 for _ in range(3)]
-
-# Массив боёв
-battles = []
 
 # Главный цикл
 while True:
