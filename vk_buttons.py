@@ -32,7 +32,9 @@ buttonsDivChoice = str(buttonsDivChoice.decode('utf-8'))
 buttonReturn = {
     "one_time": True,
     "buttons": [
+        [create_button('бросить вызов', 'primary')],
         [create_button('Остановить поиск', 'secondary')]
+
     ]}
 buttonReturn = json.dumps(buttonReturn, ensure_ascii=False).encode('utf-8')
 buttonReturn = str(buttonReturn.decode('utf-8'))
