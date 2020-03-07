@@ -2,21 +2,6 @@ from funcs import *
 from structs import *
 from vk_buttons import *
 
-# from config import cfg
-
-# токен группы
-# vk = vk_api.VkApi(token=cfg.get("vk", "token"))
-
-# токен группы
-# токен группы
-token = "91ee129261aa99a1657f987a1fa868d922352e89fe4fc21921c578e17f689e2c92bc8f1870faa9688b82b"
-vk = vk_api.VkApi(token=token)
-# vk = vk_api.VkApi(token=cfg.get("vk", "token"))
-
-# переменная для подсчета кол-во боев(зачем она?)
-countOfBattles = 0
-
-subgects_key = {1: "inf", 2: "mat", 3: "phys"}
 
 # Главный цикл
 while True:
@@ -32,55 +17,32 @@ while True:
             if text.lower() == '/id':
                 debag_func("id")
                 send_message(ID, statusID[ID])
-                '''
-                vk.method("messages.send",
-                          {"peer_id": ID,
-                           "message": str(statusID[ID]),
-                           "random_id": randint(1, 2147483647),
-                           "keyboard": None})
-                '''
+
             # Начать --> Выбор предмета
             elif text.lower() == 'начать' and statusID[ID] == 0:
                 debag_func("начать")
                 send_message(ID, "Выберите предмет", keyboard=buttonsItemsChoice)
-                '''
-                vk.method("messages.send",
-                          {"peer_id": ID,
-                           "message": 
-                           "random_id": randint(1, 2147483647),
-                           "keyboard": buttonsItemsChoice})
-                '''
+
             # Выбор предмета --> Выбор дивизиона/Обратно к предметам
             elif text.lower() in ['информатика', 'математика', "физика"] and statusID[ID] == 0:
                 debag_func("выбор предмета")
                 send_message(ID, "Выбери дивизион", keyboard=buttonsDivChoice)
-                '''
-                vk.method("messages.send",
-                          {"peer_id": ID,
-                           "message": "Выбери дивизион",
-                           "random_id": randint(1, 2147483647),
-                           "keyboard": buttonsDivChoice})
-                '''
                 statusID[ID] = (['информатика', 'математика', "физика"].index(text.lower()) + 1) * 10
                 print("************", ID, statusID[ID])
+
             # Выбор дивизиона --> Поиск противника
             elif text.lower() in map(lambda x: x.lower(), DIVISIONS) and statusID[ID] // 10 != 0:
                 debag_func("выбор дивизиона")
                 statusID[ID] += int(text[-1])
                 print("******------", ID, statusID[ID])
+                start_battle(ID)
+                """
                 # Нет противника
                 if search[statusID[ID] // 10 - 1][statusID[ID] % 10 - 1] == -1:
                     search[statusID[ID] // 10 - 1][statusID[ID] % 10 - 1] = ID
                     print(statusID[ID] // 10 - 1, statusID[ID] % 10 - 1)
                     temp = 'Поиск противника'
                     send_message(ID, temp, keyboard=buttonReturn)
-                    '''
-                    vk.method("messages.send",  # отображение надписи противник найден для второго человека
-                              {"peer_id": ID,
-                               "message": temp,
-                               "random_id": randint(1, 2147483647),
-                               "keyboard": buttonReturn})
-                               '''
                 # Противник в очереди
                 else:
                     id1 = search[statusID[ID] // 10 - 1][statusID[ID] % 10 - 1]
@@ -108,50 +70,80 @@ while True:
                     countOfBattles += 1
                     print("test 5")
                     for i in [battles[-1].id1, battles[-1].id2]:
-                        message = temp + "\n\nПервый вопрос:\n" + battles[statusID[ID] - 100].questions[0]
-                        send_message(i, message, keyboard=buttonsChoice)  # отображение надписи противник найден
-                        '''
-                        vk.method("messages.send",  
-                                  {"peer_id": i,
-                                   "message": temp + "\n\nПервый вопрос:\n" + battles[statusID[ID] - 100].questions[0],
-                                   "random_id": randint(1, 2147483647),
-                                   "keyboard": buttonsChoice})
-                        
-                        vk.method("messages.send",
-                                  {"peer_id": i,
-                                   "message": battles[statusID[ID] - 100].questions[0],
-                                   "random_id": randint(1, 2147483647),
-                                   "keyboard": buttonsChoice})
-                        '''
+                        message = temp + "\n\nПервый вопрос:\n" + battles[-1].questions[0]
+                        send_message(i, message, keyboard=buttonsChoice)
+
                     print("test 6")
+                """
+
+            elif text.lower() == "возобновить поиск":
+                statusID[ID] = int(100*statusID[ID])
+                send_message(ID, "поиск противника...", keyboard=buttonReturn)
             # Возрат из div к предметам --> Выбор предметов
             elif text.lower() == 'к предметам':
                 debag_func("к предметам")
                 send_message(ID, "Опять ты?", keyboard=buttonsItemsChoice)
-                '''
-                vk.method("messages.send",
-                          {"peer_id": ID,
-                           "message": "Опять ты?",
-                           "random_id": randint(1, 2147483647),
-                           "keyboard": buttonsItemsChoice})
-                '''
+
                 statusID[ID] = 0
 
             # Остановить поиск --> Выбор предметов
             elif text.lower() == 'остановить поиск' and '0' not in str(statusID[ID]):
-                debag_func("остановить поиск")
-                send_message(ID, "Поиск остановлен", keyboard=buttonsItemsChoice)
-                '''
-                vk.method("messages.send",
-                          {"peer_id": ID,
-                           "message": "Поиск остановлен",
-                           "random_id": randint(1, 2147483647),
-                           "keyboard": buttonsItemsChoice})
-                '''
                 search[statusID[ID] // 10 - 1][statusID[ID] % 10 - 1] = -1
                 statusID[ID] = 0
+                debag_func("остановить поиск")
+                send_message(ID, "Поиск остановлен", keyboard=buttonsItemsChoice)
 
-            # Типо бой(ВНИМАНИЕ БУДЬТЕ АКУРАТНЕЕ ПРИСУТСТВУЕТ ГОВНОКОД, ПО ВОЗМОЖНОСТЕ ПЕРЕПИШИТЕ ПО НОРМАЛЬНОМУ!!!!!)
+            elif text.lower() == 'бросить вызов' and statusID[ID] % 10 != 0:
+                print("бросить вызов")
+                if statusID[ID] == int(statusID[ID]): # если еще не бросал вызов
+                    print("бросить вызов в первый раз", statusID[ID])
+                    search[statusID[ID] // 10 - 1][statusID[ID] % 10 - 1] = -1
+                    statusID[ID] = statusID[ID]/100
+                    print(statusID[ID])
+
+                send_message(ID, "выбери друга для батла:\n https://vk.com/friends и вставь его id сюда")
+
+            #  отправка приглашения на батл
+            elif 0 < statusID[ID] < 1 and not(-1 < statusID.get(int(text), 0) < 0):
+                print("вас пригласили на батл")
+                try:
+                    send_message(text, "вас пригласили на батл", keyboard=buttonsAgree)
+                    send_message(ID, "Друг был приглашен на батл, ожидайте ответа")
+                    statusID[int(text)] = -statusID[ID]
+                    print("statusID[text]", statusID[int(text)], text)
+                    calls_dict[ID] = int(text)
+                    calls_dict[int(text)] = ID
+                except Exception as e:
+                    print("----", e)
+                    send_message(ID, "Не получилось пригласить на батл", keyboard=buttonAfterBadСall)
+
+            # если противник отказался от батла
+            elif (-1 < statusID[ID] < 0 or calls_dict.get(ID, "--") != "--") and text == "Отбой":
+                statusID[ID] = 0
+                send_message(calls_dict[ID], "друг отказался от батла", keyboard=buttonAfterBadСall)
+                send_message(ID, "вы отказались от батла")
+                del calls_dict[calls_dict[ID]]
+                del calls_dict[ID]
+
+            # если противник согласился на батл
+            elif (-1 < statusID[ID] < 0 or calls_dict.get(ID, "--") != "--") and text == "Согласен":
+                temp = "Батл начался"
+                send_message(calls_dict[ID], "друг согласился, начинаем бой")
+                statusID[ID] = int(abs(statusID[ID]) * 100) if statusID[ID] % 1 != 0 else int(statusID[ID])
+                q, a = generatequestion(sub=statusID[ID] // 10, div=statusID[ID] % 10)
+                battles.append(Battle(calls_dict[ID], ID,
+                                      statusID[ID] // 10 - 1,
+                                      statusID[ID] % 10 - 1,
+                                      q, a))
+                statusID[ID] = 100 + countOfBattles
+                for i in [battles[-1].id1, battles[-1].id2]:
+                    message = temp + "\n\nПервый вопрос:\n" + battles[-1].questions[0]
+                    send_message(i, message, keyboard=buttonsChoice)
+                    statusID[i] = 100 + countOfBattles
+
+                countOfBattles += 1
+
+
             elif statusID[ID] >= 100 and text.lower() in ['да', 'нет']:
                 debag_func("ожидание ответа при бое")
                 battlesID = statusID[ID] - 100
@@ -208,13 +200,7 @@ while True:
                     print("--=-=-=-=-=")
                     send_message(ID, temp + "\n\nCледующий вопрос:\n" + q,
                                  keyboard=buttonsChoice)
-                    '''
-                    vk.method("messages.send",
-                              {"peer_id": ID,
-                               "message": temp + "\n\nCледующий вопрос:\n" + q,
-                               "random_id": randint(1, 2147483647),
-                               "keyboard": buttonsChoice})
-                    '''
+
                 else:
                     print("flag", flag)
                     if statusID[battles[battlesID].id1] == 98 or statusID[battles[battlesID].id2] == 98:
@@ -231,39 +217,22 @@ while True:
                             temp1 = "Ничья"
                             temp2 = "Ничья"
                         send_message(ID, temp + "\n\nБой окончен!", keyboard=buttonsChoice)
-                        '''
-                        vk.method("messages.send",
-                                  {"peer_id": ID,
-                                   "message": temp + "\n\nБой окончен!",
-                                   "random_id": randint(1, 2147483647),
-                                   "keyboard": buttonsChoice})
-                        '''
+
                         for i in [[battles[battlesID].id1, temp1], [battles[battlesID].id2, temp2]]:
                             send_message(i[0], score + " " + i[1], keyboard=buttonsItemsChoice)
-                            ''''
-                            vk.method("messages.send",
-                                      {"peer_id": ,
-                                       "message": score + " " + i[1],
-                                       "random_id": randint(1, 2147483647),
-                                       "keyboard": buttonsItemsChoice})
-                            '''
+
                             statusID[i[0]] = 0
                         battles[battlesID] = "тут был батл, но он закончился"
                     else:
                         print("ожидаю окончание собеседника....")
                         statusID[ID] = 98
                         send_message(ID, temp + "Ожидайте соперника...")
-                        '''
-                        vk.method("messages.send", {
-                            "peer_id": ID,
-                            "message": temp + "Ожидайте соперника...",
-                            "random_id": randint(1, 2147483647)
-                        })
-                        '''
+
 
             # ОшибкаID
             else:
-                debag_func("ОшибкаID")
+                print("ОшибкаID " + str(ID) + str(statusID[ID]) + text)
+                print(-1 < statusID[ID] < 0 or calls_dict.get(ID, "--") != "--", text.lower() == "cогласен")
                 if statusID[ID] == 0:
                     localKeyboard = buttonsItemsChoice
                 elif statusID[ID] >= 100:
@@ -272,17 +241,14 @@ while True:
                     localKeyboard = buttonsDivChoice
                 elif statusID[ID] == 98:
                     localKeyboard = ''
+                elif 0 < statusID[ID] < 1: #ожидаем, когда игрок скинет ID противника
+                    localKeyboard = ''
+                elif -1 < statusID[ID] < 0: #ожидаем, когда игрок согласится на батл
+                    localKeyboard = ''
                 else:
                     localKeyboard = buttonReturn
                 send_message(ID, "Ошибка, так нельзя(((", keyboard=localKeyboard)
-                '''
-                vk.method("messages.send"
-                             
-                          {"peer_id": ID,
-                           "message": "Ошибка, так нельзя(((",
-                           "random_id": randint(1, 2147483647),
-                           "keyboard": localKeyboard})
-                '''
+
     except Exception as E:
         time.sleep(1)
         print("не опознанная ошибка", E)

@@ -24,3 +24,12 @@ search = [[-1] * 3 for _ in range(3)]
 
 # Массив боёв
 battles = []
+
+#массив вызовов на бой
+calls = []
+calls_dict = dict()
+
+# переменная для подсчета кол-во боев(зачем она?)
+countOfBattles = 0
+
+subgects_key = {1: "inf", 2: "mat", 3: "phys"}

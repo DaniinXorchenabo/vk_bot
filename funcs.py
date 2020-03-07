@@ -1,4 +1,46 @@
 from lib import *
+from structs import *
+from vk_buttons import *
+
+
+def start_battle(ID):
+    # Нет противника
+    if search[statusID[ID] // 10 - 1][statusID[ID] % 10 - 1] == -1:
+        search[statusID[ID] // 10 - 1][statusID[ID] % 10 - 1] = ID
+        print(statusID[ID] // 10 - 1, statusID[ID] % 10 - 1)
+        temp = 'Поиск противника'
+        send_message(ID, temp, keyboard=buttonReturn)
+    # Противник в очереди
+    else:
+        id1 = search[statusID[ID] // 10 - 1][statusID[ID] % 10 - 1]
+        print("id1 - ", id1, "id2 - ", ID)
+        temp = 'Противник найден'
+        print("test 1")
+        q, a = generatequestion(sub=statusID[ID] // 10, div=statusID[ID] % 10)
+        print("len(q)", len(q), " len(a)", len(a))
+        print(*search, (statusID[ID] // 10 - 1, statusID[ID] % 10 - 1), sep='\n')
+        print(search[statusID[ID] // 10 - 1][statusID[ID] % 10 - 1])
+        print("--", q)
+        print("++", a)
+
+        battles.append(Battle(id1, ID,
+                              statusID[ID] // 10 - 1,
+                              statusID[ID] % 10 - 1,
+                              q, a))
+
+        print("test 2")
+        statusID[search[statusID[ID] // 10 - 1][statusID[ID] % 10 - 1]] = 100 + countOfBattles
+        print("test 3")
+        search[statusID[ID] // 10 - 1][statusID[ID] % 10 - 1] = -1
+        print("test 4")
+        statusID[ID] = 100 + countOfBattles
+        countOfBattles += 1
+        print("test 5")
+        for i in [battles[-1].id1, battles[-1].id2]:
+            message = temp + "\n\nПервый вопрос:\n" + battles[-1].questions[0]
+            send_message(i, message, keyboard=buttonsChoice)
+
+        print("test 6")
 
 
 def send_message(id, messege, keyboard=None):
@@ -9,16 +51,7 @@ def send_message(id, messege, keyboard=None):
                "keyboard": keyboard})
 
 
-# доп функция для кнопок (так удобнее)
-def create_button(label, color, payload=''):
-    return {
-        "action": {
-            "type": "text",
-            "payload": json.dumps(payload),
-            "label": label
-        },
-        "color": color
-    }
+
 
 
 # функция для генерации вопросов и ответов(параша)
@@ -29,7 +62,7 @@ def generatequestion(deep=0, sub=1, div="1"):
     # s = randomlist5()
     file = open('questions/question_' + str(subgects_key[int(sub)]) + '_' + str(div) + '.txt', encoding='utf-8')
     # s = randomlist5()
-    file = open('question.txt', encoding='utf-8')
+    #file = open('question.txt', encoding='utf-8')
     text = file.readlines()
     file.close()
     shuffle(text)

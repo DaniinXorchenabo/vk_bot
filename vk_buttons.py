@@ -1,5 +1,17 @@
 from lib import *
-from funcs import *
+
+
+
+# доп функция для кнопок (так удобнее)
+def create_button(label, color, payload=''):
+    return {
+        "action": {
+            "type": "text",
+            "payload": json.dumps(payload),
+            "label": label
+        },
+        "color": color
+    }
 
 # кнопки выбора предметов
 buttonsItemsChoice = {
@@ -51,3 +63,27 @@ buttonsChoice = {
     ]}
 buttonsChoice = json.dumps(buttonsChoice, ensure_ascii=False).encode('utf-8')
 buttonsChoice = str(buttonsChoice.decode('utf-8'))
+
+# кнопки выбора
+buttonsAgree = {
+    "one_time": True,
+    "buttons": [
+        [
+            (create_button('Отбой', 'negative')),
+            (create_button('Согласен', 'positive'))
+        ]
+    ]}
+buttonsAgree = json.dumps(buttonsAgree, ensure_ascii=False).encode('utf-8')
+buttonsAgree = str(buttonsAgree.decode('utf-8'))
+
+
+buttonAfterBadСall = {
+    "one_time": True,
+    "buttons": [
+        [create_button('бросить вызов', 'primary')],
+        [create_button('возобновить поиск', 'primary')],
+        [create_button('к предметам', 'secondary')]
+
+    ]}
+buttonAfterBadСall = json.dumps(buttonAfterBadСall, ensure_ascii=False).encode('utf-8')
+buttonAfterBadСall = str(buttonAfterBadСall.decode('utf-8'))

@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3279f269-831a-4cf3-8837-ea0f94a203ab" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/lib.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/funcs.py" beforeDir="false" afterPath="$PROJECT_DIR$/funcs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/structs.py" beforeDir="false" afterPath="$PROJECT_DIR$/structs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vk_buttons.py" beforeDir="false" afterPath="$PROJECT_DIR$/vk_buttons.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,10 +19,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="280" column="41" lean-forward="true" selection-start-line="280" selection-start-column="41" selection-end-line="280" selection-end-column="41" />
+            <state relative-caret-position="-669">
+              <caret line="125" column="34" lean-forward="true" selection-start-line="125" selection-start-column="34" selection-end-line="125" selection-end-column="34" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
+                <element signature="e#525#588#0" />
+                <element signature="e#1990#2557#0" />
+                <element signature="e#1690#1933#0" />
+                <element signature="e#3697#6031#0" />
+                <element signature="e#6157#6550#0" />
+                <element signature="e#4072#4184#0" />
+                <element signature="e#4434#8788#0" />
               </folding>
             </state>
           </provider>
@@ -29,8 +38,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vk_buttons.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-78">
-              <caret line="34" column="37" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="37" />
+            <state relative-caret-position="142">
+              <caret line="71" column="33" selection-start-line="71" selection-start-column="28" selection-end-line="71" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/structs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="27" column="22" lean-forward="true" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/funcs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="290">
+              <caret line="76" column="32" selection-start-line="76" selection-start-column="28" selection-end-line="76" selection-end-column="32" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -39,28 +66,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/structs.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/funcs.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="3" column="16" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+            <state relative-caret-position="200">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -77,22 +86,29 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>statusID[ID]</find>
+      <find>temp</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/structs.py" />
-        <option value="$PROJECT_DIR$/funcs.py" />
         <option value="$PROJECT_DIR$/lib.py" />
+        <option value="$PROJECT_DIR$/structs.py" />
         <option value="$PROJECT_DIR$/vk_buttons.py" />
+        <option value="$PROJECT_DIR$/funcs.py" />
         <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="506" />
+    <option name="x" value="225" />
+    <option name="y" value="87" />
     <option name="width" value="868" />
     <option name="height" value="744" />
   </component>
@@ -109,6 +125,11 @@
               <item name="vk_bot" type="b2602c69:ProjectViewProjectNode" />
               <item name="vk_bot" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="vk_bot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vk_bot" type="462c0819:PsiDirectoryNode" />
+              <item name="questions" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -117,7 +138,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Neuron" />
+    <property name="last_opened_file_path" value="D:/robot_technology/Teplisa/engineering_baltic/raspberry" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -132,7 +153,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="vk_bot" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -154,9 +175,31 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="structs" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="vk_bot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/structs.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.structs" />
       </list>
     </recent_temporary>
   </component>
@@ -196,22 +239,23 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>33</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python38/Lib/site-packages/config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-11342">
           <folding>
             <element signature="e#2880#2893#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -223,36 +267,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vk_buttons.py">
+    <entry file="file://$PROJECT_DIR$/lib.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-78">
-          <caret line="34" column="37" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="37" />
+        <state relative-caret-position="200">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
           <folding>
-            <element signature="e#0#17#0" expanded="true" />
+            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/structs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="180">
+          <caret line="27" column="22" lean-forward="true" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/funcs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="16" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="16" />
+        <state relative-caret-position="290">
+          <caret line="76" column="32" selection-start-line="76" selection-start-column="28" selection-end-line="76" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vk_buttons.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="71" column="33" selection-start-line="71" selection-start-column="28" selection-end-line="71" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="280" column="41" lean-forward="true" selection-start-line="280" selection-start-column="41" selection-end-line="280" selection-end-column="41" />
+        <state relative-caret-position="-669">
+          <caret line="125" column="34" lean-forward="true" selection-start-line="125" selection-start-column="34" selection-end-line="125" selection-end-column="34" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#525#588#0" />
+            <element signature="e#1990#2557#0" />
+            <element signature="e#1690#1933#0" />
+            <element signature="e#3697#6031#0" />
+            <element signature="e#6157#6550#0" />
+            <element signature="e#4072#4184#0" />
+            <element signature="e#4434#8788#0" />
           </folding>
         </state>
       </provider>
