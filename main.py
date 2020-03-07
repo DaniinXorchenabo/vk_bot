@@ -104,7 +104,7 @@ while True:
                 send_message(ID, "выбери друга для батла:\n https://vk.com/friends и вставь его id сюда")
 
             #  отправка приглашения на батл
-            elif 0 < statusID[ID] < 1 and not(-1 < statusID.get(int(text), 0) < 0):
+            elif 0 < statusID[ID] < 1 and text.isdigit() and not(-1 < statusID.get(int(text), 0) < 0):
                 print("вас пригласили на батл")
                 try:
                     send_message(text, "вас пригласили на батл", keyboard=buttonsAgree)
