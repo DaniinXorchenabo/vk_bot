@@ -2,6 +2,22 @@ from lib import *
 from structs import *
 from vk_buttons import *
 
+def formating_id(herf):
+    if herf.isdigit():
+        return herf
+    if herf[:4] == "http":
+        herf = herf.split("://vk.com/")[1]
+    if herf[2:].isdigit():
+        return herf[2:]
+    else:
+        try:
+            user_id = vk.method("utils.resolveScreenName", {"screen_name": herf})['object_id']
+            print(user_id)
+            return user_id
+        except Exception as e:
+            print("произошла какая-то ошибка при выяснении id пользователя", e)
+    return None
+
 
 def start_battle(ID):
     # Нет противника

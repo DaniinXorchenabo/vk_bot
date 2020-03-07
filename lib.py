@@ -9,5 +9,7 @@ import vk_api
 
 debagFlag = [True]
 
-token = "91ee129261aa99a1657f987a1fa868d922352e89fe4fc21921c578e17f689e2c92bc8f1870faa9688b82b"
+token = "ac7b695bc7d4e43747629c8918a08aada6954976ccfe5e9db4c9756675b7c9230a6ef46e481258629730b"
 vk = vk_api.VkApi(token=token)
+
+print(type(None))

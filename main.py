@@ -4,12 +4,13 @@ from vk_buttons import *
 
 
 # Главный цикл
+text = ""
 while True:
     try:
         messages = vk.method("messages.getConversations", {"offset": 0, "count": 20, "filter": "unanswered"})
         if messages["count"] >= 1:
-
             ID = messages["items"][0]["last_message"]["from_id"]
+            last_text = text
             text = messages["items"][0]["last_message"]["text"]
             statusID[ID] = statusID.get(ID, 0)
 
@@ -79,6 +80,7 @@ while True:
             elif text.lower() == "возобновить поиск":
                 statusID[ID] = int(100*statusID[ID])
                 send_message(ID, "поиск противника...", keyboard=buttonReturn)
+
             # Возрат из div к предметам --> Выбор предметов
             elif text.lower() == 'к предметам':
                 debag_func("к предметам")
@@ -104,18 +106,33 @@ while True:
                 send_message(ID, "выбери друга для батла:\n https://vk.com/friends и вставь его id сюда")
 
             #  отправка приглашения на батл
-            elif 0 < statusID[ID] < 1 and text.isdigit() and not(-1 < statusID.get(int(text), 0) < 0):
-                print("вас пригласили на батл")
-                try:
-                    send_message(text, "вас пригласили на батл", keyboard=buttonsAgree)
-                    send_message(ID, "Друг был приглашен на батл, ожидайте ответа")
-                    statusID[int(text)] = -statusID[ID]
-                    print("statusID[text]", statusID[int(text)], text)
-                    calls_dict[ID] = int(text)
-                    calls_dict[int(text)] = ID
-                except Exception as e:
-                    print("----", e)
-                    send_message(ID, "Не получилось пригласить на батл", keyboard=buttonAfterBadСall)
+            elif 0 < statusID[ID] < 1 and text != last_text:
+                text = formating_id(text)
+                print("--------text", text)
+                if text and not(-1 < statusID.get(int(text), 0) < 0):
+                    text = int(text)
+                    print("вас пригласили на батл")
+                    try:
+                        print('1')
+                        send_message(text, "вас пригласили на батл", keyboard=buttonsAgree)
+                        send_message(ID, "Друг был приглашен на батл, ожидайте ответа")
+                        print(2)
+                        statusID[text] = -statusID[ID]
+                        print("statusID[text]", statusID[text], text)
+                        calls_dict[ID] = text
+                        calls_dict[text] = ID
+                    except Exception as e:
+                        print("----", e)
+                        send_message(ID, "Не получилось пригласить на батл", keyboard=buttonAfterBadСall)
+                        if "Can't send messages for users without permission" in str(e):
+                            send_message(ID,"Бот не может отправлять сообщения этому человеку. Попросите его отправить сообщение боту, переслав эту ссылку")
+                            send_message(ID, "https://vk.com/markovbt")
+                elif type(text) == "NoneType":
+                    print(5)
+                    send_message(ID, "человека с таким ID не было найдено", keyboard=buttonAfterBadСall)
+                else:
+                    print(6)
+                    send_message(ID, "произошло какое-то недоразумение, попробуйте ввести другого человека", keyboard=buttonAfterBadСall)
 
             # если противник отказался от батла
             elif (-1 < statusID[ID] < 0 or calls_dict.get(ID, "--") != "--") and text == "Отбой":
@@ -231,7 +248,7 @@ while True:
 
             # ОшибкаID
             else:
-                print("ОшибкаID " + str(ID) + str(statusID[ID]) + text)
+                print("ОшибкаID ", str(ID), str(statusID[ID]) , text)
                 print(-1 < statusID[ID] < 0 or calls_dict.get(ID, "--") != "--", text.lower() == "cогласен")
                 if statusID[ID] == 0:
                     localKeyboard = buttonsItemsChoice
@@ -252,3 +269,9 @@ while True:
     except Exception as E:
         time.sleep(1)
         print("не опознанная ошибка", E)
+        try:
+            if "Can't send messages for users without permission" in str(E):
+                send_message(ID, "Бот не может отправлять сообщения этому человеку. Попросите его отправить сообщение боту, переслав эту ссылку")
+                send_message(ID, "https://vk.com/markovbt")
+        except Exception as e:
+            print("повторная ошибка", e)
