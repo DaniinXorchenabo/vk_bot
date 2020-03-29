@@ -103,10 +103,7 @@ def generatequestion(deep=0, sub=1, div="1"):
     question = []
     answers = []
     debag_func("инициализация списков **generatequestion")
-    # s = randomlist5()
     file = open('questions/question_' + str(subgects_key[int(sub)]) + '_' + str(div) + '.txt', encoding='utf-8')
-    # s = randomlist5()
-    #file = open('question.txt', encoding='utf-8')
     text = file.readlines()
     file.close()
     shuffle(text)
@@ -114,11 +111,20 @@ def generatequestion(deep=0, sub=1, div="1"):
         temp = i[:-1]  # убираем
 
         debag_func(str([temp]) + " - случайный вопрос из файла **generatequestion")
-        if temp[-1] == '.':
-            answers.append(True)
+        if "&" in temp:
+            quest, answs = temp.split("&")
+            good_ans = []
+            answs = [((i.strip().replase("!", ""),
+                       good_ans.append(ind))[0] if "!" in i else i.strip())
+                     for ind, i in enumerate(answs.split(';'))]
+            answers.append([good_ans[:], answs[:]])
+            question.append(quest)
+        elif temp[-1] == '.':
+            answers.append([1, ["Да", "Нет"]])
             question.append(temp[:-1])
+
         else:
-            answers.append(False)
+            answers.append([0, ["Да", "Нет"]])
             question.append(temp)
     if question == [] and deep < 10:
         question, answers = generatequestion(deep=deep + 1, sub=sub, div=div)
