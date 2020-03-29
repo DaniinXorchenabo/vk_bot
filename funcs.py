@@ -29,9 +29,11 @@ def work_in_forbidden_list(work="w", _list=[]):
 def formating_id(herf):
     if herf.isdigit():
         return herf
+    if "@" in herf:
+        herf = herf.split()[-1]
     if herf[:4] == "http":
         herf = herf.split("://vk.com/")[1]
-    if herf[2:].isdigit():
+    if herf[2:].isdigit() and herf[:2] == "id":
         return herf[2:]
     else:
         try:
