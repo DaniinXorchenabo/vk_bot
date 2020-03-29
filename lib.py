@@ -9,7 +9,11 @@ import vk_api
 
 debagFlag = [True]
 
-token = "ac7b695bc7d4e43747629c8918a08aada6954976ccfe5e9db4c9756675b7c9230a6ef46e481258629730b"
-vk = vk_api.VkApi(token=token)
+token = "token"
+vk = vk_api.VkApi(token=token, app_id=2685278)
 
 print(type(None))
+
+forbidden_list = []
+
+last_messenges = dict()  # последнее сообщение, которое отправил бот key: int (ID) value: str (messenge)

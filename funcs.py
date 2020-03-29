@@ -2,6 +2,30 @@ from lib import *
 from structs import *
 from vk_buttons import *
 
+
+def work_in_forbidden_list(work="w", _list=[]):
+    if work == "w":
+        with open("forbidden_list.txt", "w") as f:
+            f.write("\n".join(list(map(str, _list))))
+    elif work == "a":
+        if type(_list) != list:
+             _list = [str(_list)]
+        with open("forbidden_list.txt", "a") as f:
+            f.write("\n" + "\n".join(list(map(str, _list))))
+    elif work == "del":
+        if type(_list) != list:
+            _list = [str(_list)]
+        _list = map(str, _list)
+        with open("forbidden_list.txt", "+") as f:
+            forbidden_list_new = f.read().split()
+            for i in _list:
+                forbidden_list_new.remove(i)
+            f.write("\n".join(list(map(str, forbidden_list_new))))
+    elif work == "r":
+        with open("forbidden_list.txt", "r") as f:
+            return f.read().split()
+
+
 def formating_id(herf):
     if herf.isdigit():
         return herf
@@ -59,12 +83,14 @@ def start_battle(ID):
         print("test 6")
 
 
-def send_message(id, messege, keyboard=None):
-    vk.method("messages.send",
-              {"peer_id": id,
-               "message": str(messege),
-               "random_id": randint(1, 2147483647),
-               "keyboard": keyboard})
+def send_message(_id, messege, keyboard=None):
+    if last_messenges.get(int(_id), "") != messege:
+        last_messenges[int(_id)] = messege
+        vk.method("messages.send",
+                  {"peer_id": _id,
+                   "message": str(messege),
+                   "random_id": randint(1, 2147483647),
+                   "keyboard": keyboard})
 
 
 
@@ -83,7 +109,8 @@ def generatequestion(deep=0, sub=1, div="1"):
     file.close()
     shuffle(text)
     for i in text[:5]:
-        temp = i[:-1]  # убираем \n
+        temp = i[:-1]  # убираем
+
         debag_func(str([temp]) + " - случайный вопрос из файла **generatequestion")
         if temp[-1] == '.':
             answers.append(True)
