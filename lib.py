@@ -8,6 +8,10 @@ import vk_api
 #from config import cfg
 
 debagFlag = [True]
+
+countOfBattles = 0
+
+
 try:
     with open("conf.txt", "r") as f:
         token = f.read().strip()

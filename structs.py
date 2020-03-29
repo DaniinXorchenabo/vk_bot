@@ -33,7 +33,10 @@ calls_dict = dict()
 countOfBattles = 0
 
 subgects_key = {1: "inf", 2: "mat", 3: "phys"}
+DIVISIONS = ["Div 1", "Div 2", "Div 3"]
 
 forbidden_list = []
 
 last_messenges = dict()  # последнее сообщение, которое отправил бот key: int (ID) value: str (messenge)
+
+buttons = dict()

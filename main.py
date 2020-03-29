@@ -156,6 +156,7 @@ while True:
                 temp = "Батл начался"
                 send_message(calls_dict[ID], "друг согласился, начинаем бой")
                 statusID[ID] = int(abs(statusID[ID]) * 100) if statusID[ID] % 1 != 0 else int(statusID[ID])
+                print("&&*******___", statusID[ID])
                 q, a = generatequestion(sub=statusID[ID] // 10, div=statusID[ID] % 10)
                 battles.append(Battle(calls_dict[ID], ID,
                                       statusID[ID] // 10 - 1,
@@ -189,14 +190,17 @@ while True:
                         loc_cnt = battles[battlesID].counter1
                         flag = False
                     print('сейчас попытка индекса 2', end=' ')
-                    if battles[battlesID].answers[loc_cnt - 1] and text.lower() == 'да' or  not (battles[battlesID].answers[loc_cnt - 1]) and text.lower() == 'нет':
+
+                    #if battles[battlesID].answers[loc_cnt - 1] and text.lower() == 'да' or not (battles[battlesID].answers[loc_cnt - 1]) and text.lower() == 'нет':
+
+                    if battles[battlesID].answers[loc_cnt - 1][0] == text:
                         print("верный ответ на вопрос (id1)", end=' ')
                         temp = 'Верно, '
                         battles[battlesID].point1 += 1
                     else:
                         temp = 'Неверно, '
                         print("неверный ответ на вопрос (id2)")
-                    print("которая прошла успешно")
+                    print("которая прошла успешно", battles[battlesID].answers[loc_cnt - 1][0], text)
 
 
                 elif battles[battlesID].id2 == ID:
@@ -211,14 +215,15 @@ while True:
                         loc_cnt = battles[battlesID].counter2
                         flag = False
                     print('сейчас попытка индекса 4', end=' ')
-                    if battles[battlesID].answers[loc_cnt - 1] and text.lower() == 'да' or  not (battles[battlesID].answers[loc_cnt - 1]) and text.lower() == 'нет':
+                    #if battles[battlesID].answers[loc_cnt - 1] and text.lower() == 'да' or  not (battles[battlesID].answers[loc_cnt - 1]) and text.lower() == 'нет':
+                    if battles[battlesID].answers[loc_cnt - 1][0] == text:
                         print("верный ответ на вопрос (id2)", end=' ')
                         temp = 'Верно, '
                         battles[battlesID].point2 += 1
                     else:
                         print("неверный ответ на вопрос (id2)")
                         temp = 'Неверно, '
-                    print("которая прошла успешно")
+                    print("которая прошла успешно", battles[battlesID].answers[loc_cnt - 1][0], text)
 
                 if flag:
                     print("--=-=-=-=-=")

@@ -46,6 +46,7 @@ def formating_id(herf):
 
 
 def start_battle(ID):
+    global countOfBattles
     # Нет противника
     if search[statusID[ID] // 10 - 1][statusID[ID] % 10 - 1] == -1:
         search[statusID[ID] // 10 - 1][statusID[ID] % 10 - 1] = ID
@@ -108,23 +109,23 @@ def generatequestion(deep=0, sub=1, div="1"):
     file.close()
     shuffle(text)
     for i in text[:5]:
-        temp = i[:-1]  # убираем
+        temp = i[:-1]  # убираем \n
 
         debag_func(str([temp]) + " - случайный вопрос из файла **generatequestion")
         if "&" in temp:
             quest, answs = temp.split("&")
             good_ans = []
             answs = [((i.strip().replase("!", ""),
-                       good_ans.append(ind))[0] if "!" in i else i.strip())
+                       good_ans.append(i))[0] if "!" in i else i.strip())
                      for ind, i in enumerate(answs.split(';'))]
             answers.append([good_ans[:], answs[:]])
             question.append(quest)
         elif temp[-1] == '.':
-            answers.append([1, ["Да", "Нет"]])
+            answers.append(["Да", ["Нет", "Да"]])
             question.append(temp[:-1])
 
         else:
-            answers.append([0, ["Да", "Нет"]])
+            answers.append(["Нет", ["Нет", "Да"]])
             question.append(temp)
     if question == [] and deep < 10:
         question, answers = generatequestion(deep=deep + 1, sub=sub, div=div)
