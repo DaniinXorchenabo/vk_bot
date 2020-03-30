@@ -20,8 +20,18 @@ class Participant:
     point: int = 0
     counter: int = 0
 
+
+@dataclass
+class idInfo:
+    statusID: Any
+    last_messenge: str = ""  # последнее сообщение, отправленное человеку
+    last_come_messenge: str = "&@##%$*(!&~~`"  # последнее сообщение, которое прищло от человека
+    last_keyboard: str = ""
+    battle: int = 0
+
+countOfBattles = 0
 # Словарь состояний
-statusID = {} # type: dict[int, int] id: status
+id_info = {} # type: dict[int, int] id: status
 
 # Массив очереди
 search = [[-1] * 3 for _ in range(3)]
@@ -42,7 +52,3 @@ DIVISIONS = ["Div 1", "Div 2", "Div 3"]
 #список тех, кому нельзя писать
 forbidden_list = []
 
-last_messenges = dict()  # последнее сообщение, которое отправил бот key: int (ID) value: str (messenge)
-
-# массив с кнопками конфигурации (программа не использует это, кажется)
-buttons = dict()

@@ -3,14 +3,14 @@ import time
 from random import shuffle, random, randint
 import json
 from itertools import chain
-
+from typing import Any
 import vk_api
 
 #from config import cfg
 
 debagFlag = [True]
 
-countOfBattles = 0
+
 
 
 try:

@@ -5,8 +5,8 @@
       <change beforePath="$PROJECT_DIR$/funcs.py" beforeDir="false" afterPath="$PROJECT_DIR$/funcs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/questions/question_inf_2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/questions/question_inf_2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/structs.py" beforeDir="false" afterPath="$PROJECT_DIR$/structs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vk_buttons.py" beforeDir="false" afterPath="$PROJECT_DIR$/vk_buttons.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,15 +19,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="93">
+              <caret line="26" column="50" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="50" />
               <folding>
                 <element signature="e#1#20#0" expanded="true" />
-                <element signature="e#874#937#0" />
                 <element signature="e#1060#1162#0" />
-                <element signature="e#1345#1610#0" />
-                <element signature="e#3576#5348#0" />
-                <element signature="e#7607#7888#0" />
+                <element signature="e#4561#4781#0" />
+                <element signature="e#7210#7468#0" />
               </folding>
             </state>
           </provider>
@@ -45,15 +43,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vk_buttons.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-337">
-              <caret line="8" column="37" lean-forward="true" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+            <state relative-caret-position="178">
+              <caret line="32" column="18" selection-start-line="32" selection-end-line="32" selection-end-column="18" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
-                <element signature="e#875#1272#1" />
-                <element signature="e#1944#2267#1" />
-                <element signature="e#2350#2725#1" />
-                <element signature="e#2804#3137#1" />
-                <element signature="e#3223#3611#1" />
               </folding>
             </state>
           </provider>
@@ -62,25 +55,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/structs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-251">
-              <caret line="10" column="16" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/funcs.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="177" column="37" lean-forward="true" selection-start-line="177" selection-start-column="37" selection-end-line="177" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#17#0" expanded="true" />
-                <element signature="e#119#910#0" />
-                <element signature="e#941#1472#0" />
-                <element signature="e#5975#6234#0" />
-                <element signature="e#2119#2732#0" />
-                <element signature="e#7050#7356#0" />
-              </folding>
+            <state relative-caret-position="140">
+              <caret line="25" column="12" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -88,10 +64,25 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="100">
+              <caret line="5" column="22" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/funcs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="93">
+              <caret line="160" column="60" selection-start-line="160" selection-start-column="60" selection-end-line="160" selection-end-column="60" />
               <folding>
-                <element signature="e#0#40#0" expanded="true" />
+                <element signature="e#0#17#0" expanded="true" />
+                <element signature="e#119#909#0" />
+                <element signature="e#940#1471#0" />
+                <element signature="e#1558#2139#0" />
+                <element signature="e#2100#4836#0" />
+                <element signature="e#5001#5268#0" />
+                <element signature="e#6375#7628#0" />
               </folding>
             </state>
           </provider>
@@ -108,16 +99,29 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>statusID[ID]</find>
       <find>temp</find>
       <find>subgects_key</find>
       <find>generatequestion</find>
-      <find>create_battle</find>
       <find>поиск противника...</find>
       <find>calls</find>
       <find>q</find>
       <find>ganerate_answer_button</find>
+      <find>statusID[ID]</find>
+      <find>calls_dict</find>
+      <find>idInfo</find>
+      <find>StatusID[ID]</find>
+      <find>statusID</find>
+      <find>StatusID</find>
+      <find>start_battle</find>
+      <find>send_message</find>
+      <find>send_first_question</find>
+      <find>create_battle</find>
     </findStrings>
+    <replaceStrings>
+      <replace>statusID</replace>
+      <replace>id_info</replace>
+      <replace>id_info[ID].statusID</replace>
+    </replaceStrings>
     <dirStrings>
       <dir>D:\programs\jobs\vk_bot\questions</dir>
     </dirStrings>
@@ -129,11 +133,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/questions/create_all_progect.py" />
-        <option value="$PROJECT_DIR$/vk_buttons.py" />
-        <option value="$PROJECT_DIR$/structs.py" />
-        <option value="$PROJECT_DIR$/lib.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/questions/question_inf_2.txt" />
+        <option value="$PROJECT_DIR$/vk_buttons.py" />
+        <option value="$PROJECT_DIR$/lib.py" />
+        <option value="$PROJECT_DIR$/structs.py" />
+        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/funcs.py" />
       </list>
     </option>
@@ -279,7 +283,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36497545" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.31423897" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -292,6 +296,25 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36497545" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3289689" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3289689" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.3289689" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python38/Lib/site-packages/config.py">
@@ -363,38 +386,6 @@
     <entry file="file://$PROJECT_DIR$/questions/conf">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/structs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-251">
-          <caret line="10" column="16" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#1#20#0" expanded="true" />
-            <element signature="e#874#937#0" />
-            <element signature="e#1060#1162#0" />
-            <element signature="e#1345#1610#0" />
-            <element signature="e#3576#5348#0" />
-            <element signature="e#7607#7888#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/questions/question_inf_2.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -402,32 +393,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/structs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="25" column="12" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/vk_buttons.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-337">
-          <caret line="8" column="37" lean-forward="true" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+        <state relative-caret-position="178">
+          <caret line="32" column="18" selection-start-line="32" selection-end-line="32" selection-end-column="18" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
-            <element signature="e#875#1272#1" />
-            <element signature="e#1944#2267#1" />
-            <element signature="e#2350#2725#1" />
-            <element signature="e#2804#3137#1" />
-            <element signature="e#3223#3611#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="26" column="50" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="50" />
+          <folding>
+            <element signature="e#1#20#0" expanded="true" />
+            <element signature="e#1060#1162#0" />
+            <element signature="e#4561#4781#0" />
+            <element signature="e#7210#7468#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/funcs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="177" column="37" lean-forward="true" selection-start-line="177" selection-start-column="37" selection-end-line="177" selection-end-column="37" />
+        <state relative-caret-position="93">
+          <caret line="160" column="60" selection-start-line="160" selection-start-column="60" selection-end-line="160" selection-end-column="60" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
-            <element signature="e#119#910#0" />
-            <element signature="e#941#1472#0" />
-            <element signature="e#5975#6234#0" />
-            <element signature="e#2119#2732#0" />
-            <element signature="e#7050#7356#0" />
+            <element signature="e#119#909#0" />
+            <element signature="e#940#1471#0" />
+            <element signature="e#1558#2139#0" />
+            <element signature="e#2100#4836#0" />
+            <element signature="e#5001#5268#0" />
+            <element signature="e#6375#7628#0" />
           </folding>
         </state>
       </provider>

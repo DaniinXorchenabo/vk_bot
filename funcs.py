@@ -45,23 +45,23 @@ def formating_id(herf):
     return None
 
 
-def start_battle(ID):  # начало батла, созданного при поиске в таблице
+def start_battle(ID, text=''):  # начало батла, созданного при поиске в таблице
     global countOfBattles
     # Нет противника
-    if search[statusID[ID] // 10 - 1][statusID[ID] % 10 - 1] in [-1, ID]:
-        search[statusID[ID] // 10 - 1][statusID[ID] % 10 - 1] = ID
-        print(statusID[ID] // 10 - 1, statusID[ID] % 10 - 1)
+    if search[id_info[ID].statusID // 10 - 1][id_info[ID].statusID % 10 - 1] in [-1, ID]:
+        search[id_info[ID].statusID // 10 - 1][id_info[ID].statusID % 10 - 1] = ID
+        print(id_info[ID].statusID // 10 - 1, id_info[ID].statusID % 10 - 1)
         temp = 'Поиск противника'
-        send_message(ID, temp, keyboard=buttonReturn)
+        send_message(ID, temp, keyboard=buttonReturn, text=text)
     # Противник в очереди
     else:
         temp = 'Противник найден'
-        create_battle(ID, search[statusID[ID] // 10 - 1][statusID[ID] % 10 - 1])
-        send_first_question(temp)
+        create_battle(ID, search[id_info[ID].statusID // 10 - 1][id_info[ID].statusID % 10 - 1])
+        send_first_question(temp, text=text)
 
 
 def answ_and_qw(ID, text):
-    battlesID = statusID[ID] - 100
+    battlesID = id_info[ID].statusID - 100
     temp = "если вы это читаете, значит что-то пошло не так...((("
     q = "тут должен быть ворпос, но что-то пошло не так...((("
     flag = True
@@ -100,11 +100,11 @@ def answ_and_qw(ID, text):
         keywordd = ganerate_answer_button(*loc_buttle.answers[buttle_hum.counter - 1])
         print("answ_and_qw", keywordd)
         send_message(ID, temp + "\n\nCледующий вопрос:\n" + q,
-                     keyboard=keywordd)
+                     keyboard=keywordd, text=text)
 
     else:
         print("flag", flag)
-        if bool([i for i in battles[battlesID].people if statusID[i.id] == 98]):
+        if bool([i for i in battles[battlesID].people if id_info[i.id].statusID == 98]):
             print("бой закончен")
             score = ":".join([str(i.point) for i in battles[battlesID].people])
             print("score", score)
@@ -113,56 +113,63 @@ def answ_and_qw(ID, text):
                              key=lambda i: i[1],
                              reverse=True)
 
-            send_message(ID, temp + "\n\nБой окончен!",
+            send_message(ID, temp + "\n\nБой окончен!", text=text,
                          keyboard=buttonsChoice)
 
             for ind, [_id, point] in enumerate(sort_id):
-                send_message(_id, score + " " + temps[ind],
+                send_message(_id, score + " " + temps[ind], text=text,
                              keyboard=buttonsItemsChoice)
-                statusID[_id] = 0
+                id_info[_id].statusID = 0
             battles[battlesID] = "тут был батл, но он закончился"
         else:
             print("ожидаю окончание собеседника....")
-            statusID[ID] = 98
-            send_message(ID, temp + "Ожидайте соперника...")
+            id_info[ID].statusID = 98
+            send_message(ID, temp + "Ожидайте соперника...", text=text)
 
 
-def send_first_question(temp):
+def send_first_question(temp, text=''):
     for i in battles[-1].people:
         message = temp + "\n\nПервый вопрос:\n" + battles[-1].questions[0]
         print(battles[-1].answers[0])
-        send_message(i.id, message,
+        send_message(i.id, message, text=text,
                      keyboard=ganerate_answer_button(*battles[-1].answers[0]))
 
 
 def create_battle(ID, id1=None):
     global countOfBattles
     if not bool(id1):
-        id1 = search[statusID[ID] // 10 - 1][statusID[ID] % 10 - 1]
+        id1 = search[id_info[ID].statusID // 10 - 1][id_info[ID].statusID % 10 - 1]
     battles.append(create_battle_obj([id1, ID],
-                                     statusID[ID] // 10 - 1,
-                                     statusID[ID] % 10 - 1,
-                                     *generatequestion(sub=statusID[ID] // 10,
-                                                       div=statusID[ID] % 10)
+                                     id_info[ID].statusID // 10 - 1,
+                                     id_info[ID].statusID % 10 - 1,
+                                     *generatequestion(sub=id_info[ID].statusID // 10,
+                                                       div=id_info[ID].statusID % 10)
                                      )
                    )
-    if statusID[ID] % 1 == 0:
-        search[statusID[ID] // 10 - 1][statusID[ID] % 10 - 1] = -1
-    statusID[ID] = 100 + countOfBattles
-    statusID[id1] = 100 + countOfBattles
+    if id_info[ID].statusID % 1 == 0:
+        search[id_info[ID].statusID // 10 - 1][id_info[ID].statusID % 10 - 1] = -1
+    id_info[ID].statusID = 100 + countOfBattles
+    id_info[id1].statusID = 100 + countOfBattles
+    print("=======! create_battle !=======")
+    print(ID, id1)
     countOfBattles += 1
 
 
-def send_message(_id, messege, keyboard=None):
-    print(f"отправка сообщения человеку {_id}")
-    if last_messenges.get(int(_id), "") != messege:
-        last_messenges[int(_id)] = messege
+def send_message(_id, messege, keyboard=None, text=''):
+    print(f"попытка отправеи сообщения человеку {_id}")
+    if not(id_info.get(int(_id))) or (id_info[int(_id)].last_messenge != messege) or text != id_info[int(_id)].last_come_messenge:
+        id_info[int(_id)] = id_info.get(int(_id), idInfo(0))
+        print(f"отправка сообщения человеку {_id}")
+        id_info[int(_id)].last_messenge = messege
+        id_info[int(_id)].last_keyboard = keyboard
         _dict = {"peer_id": _id,
                  "message": str(messege),
                  "random_id": randint(1, 2147483647),
                  "keyboard": keyboard}
         vk.method("messages.send", _dict)
-
+    else:
+        print((id_info[int(_id)].last_messenge != messege), text != id_info[int(_id)].last_come_messenge)
+        print(id_info[int(_id)].last_messenge, messege, text, id_info[int(_id)].last_come_messenge )
 
 # функция для генерации вопросов и ответов(параша)
 def generatequestion(deep=0, sub=1, div="1"):
@@ -230,7 +237,7 @@ def ganerate_answer_button(*buttons: list, size=2):
 
 
 def check_correct_answer(ID, text):
-    loc_battles = battles[statusID[ID] - 100]
+    loc_battles = battles[id_info[ID].statusID - 100]
     if text in list(chain(
             *[loc_battles.answers[i.counter]
               for i in loc_battles.people if i.counter < len(loc_battles.answers)])):
