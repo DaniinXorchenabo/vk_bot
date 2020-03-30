@@ -180,7 +180,7 @@ def generatequestion(deep=0, sub=1, div="1"):
         if "&" in temp:
             quest, answs = temp.split("&")
             good_ans = []
-            answs = [((i.strip().replase("!", ""),
+            answs = [((i.strip().replace("!", ""),
                        good_ans.append(i))[0] if "!" in i else i.strip())
                      for ind, i in enumerate(answs.split(';'))]
             answers.append([good_ans[:], answs[:]])
@@ -220,7 +220,7 @@ def ganerate_answer_button(*buttons: list, size=2):
             _len = len(buttons)
             print("generate_bot")
             return create_all_button(
-                [[(buttons[i + j]) for j in range((
+                *[[(buttons[i + j]) for j in range((
                     _len - i if 0 < _len - i < size else size
                 ))]
                  for i in range(0, _len, size)]
