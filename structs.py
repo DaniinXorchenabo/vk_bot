@@ -4,17 +4,17 @@ from lib import *
 # структура для хранения информации о текущих битвах(так удобнее)
 @dataclass  # ничего подобного, оно должно реализовываться по-другому
 class Battle:
-    id1: int
-    id2: int
     sub: int
     div: int
     questions: list
     answers: list
-    point1: int = 0
-    point2: int = 0
-    counter1: int = 0
-    counter2: int = 0
+    people: list  # type: list[Participant]
 
+@dataclass
+class Participant:
+    id: int
+    point: int = 0
+    counter: int = 0
 
 # Словарь состояний
 statusID = {}

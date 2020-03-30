@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3279f269-831a-4cf3-8837-ea0f94a203ab" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/funcs.py" beforeDir="false" afterPath="$PROJECT_DIR$/funcs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/structs.py" beforeDir="false" afterPath="$PROJECT_DIR$/structs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vk_buttons.py" beforeDir="false" afterPath="$PROJECT_DIR$/vk_buttons.py" afterDir="false" />
@@ -19,27 +18,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="225" column="96" selection-start-line="225" selection-start-column="96" selection-end-line="225" selection-end-column="96" />
+            <state relative-caret-position="220">
+              <caret line="52" column="17" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
               <folding>
                 <element signature="e#1#20#0" expanded="true" />
                 <element signature="e#874#937#0" />
                 <element signature="e#1060#1162#0" />
                 <element signature="e#1345#1610#0" />
-                <element signature="e#1777#3959#0" />
-                <element signature="e#1958#3959#1" />
-                <element signature="e#4031#4146#0" />
-                <element signature="e#4272#4406#0" />
-                <element signature="e#4561#4781#0" />
-                <element signature="e#4876#5327#0" />
-                <element signature="e#5450#7046#0" />
                 <element signature="e#7210#7468#0" />
-                <element signature="e#7635#8516#0" />
+                <element signature="e#7607#7888#0" />
                 <element signature="e#9040#9323#0" />
                 <element signature="e#9374#9505#0" />
                 <element signature="e#9873#10015#0" />
                 <element signature="e#10070#10152#0" />
-                <element signature="e#10374#10657#0" />
                 <element signature="e#10708#10839#0" />
                 <element signature="e#11285#11367#0" />
               </folding>
@@ -50,8 +41,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vk_buttons.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="47" selection-start-line="47" selection-end-line="47" selection-end-column="39" />
+            <state relative-caret-position="-851">
+              <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
                 <element signature="e#875#1272#1" />
@@ -67,8 +58,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/structs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="140">
+              <caret line="22" column="6" selection-start-line="22" selection-end-line="22" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -76,12 +67,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/funcs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="127" column="33" selection-start-line="127" selection-start-column="33" selection-end-line="127" selection-end-column="33" />
+            <state relative-caret-position="243">
+              <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
                 <element signature="e#119#910#0" />
                 <element signature="e#941#1472#0" />
+                <element signature="e#2119#2732#0" />
+                <element signature="e#3529#4383#0" />
               </folding>
             </state>
           </provider>
@@ -90,7 +83,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
+            <state relative-caret-position="40">
               <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
@@ -114,6 +107,8 @@
       <find>temp</find>
       <find>subgects_key</find>
       <find>generatequestion</find>
+      <find>ganerate_answer_button</find>
+      <find>create_battle</find>
     </findStrings>
     <dirStrings>
       <dir>D:\programs\jobs\vk_bot\questions</dir>
@@ -126,18 +121,18 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/questions/create_all_progect.py" />
-        <option value="$PROJECT_DIR$/vk_buttons.py" />
         <option value="$PROJECT_DIR$/structs.py" />
         <option value="$PROJECT_DIR$/lib.py" />
+        <option value="$PROJECT_DIR$/vk_buttons.py" />
         <option value="$PROJECT_DIR$/funcs.py" />
         <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="29" />
-    <option name="y" value="62" />
-    <option name="width" value="868" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectView">
@@ -182,6 +177,27 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.main">
+    <configuration name="funcs" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="vk_bot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/funcs.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="vk_bot" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -227,6 +243,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.funcs" />
         <item itemvalue="Python.structs" />
       </list>
     </recent_temporary>
@@ -339,7 +356,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
+        <state relative-caret-position="40">
           <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
@@ -347,10 +364,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/structs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="22" column="6" selection-start-line="22" selection-end-line="22" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/vk_buttons.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="47" selection-start-line="47" selection-end-line="47" selection-end-column="39" />
+        <state relative-caret-position="-851">
+          <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
             <element signature="e#875#1272#1" />
@@ -362,48 +386,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/structs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/funcs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="127" column="33" selection-start-line="127" selection-start-column="33" selection-end-line="127" selection-end-column="33" />
+        <state relative-caret-position="243">
+          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
             <element signature="e#119#910#0" />
             <element signature="e#941#1472#0" />
+            <element signature="e#2119#2732#0" />
+            <element signature="e#3529#4383#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="225" column="96" selection-start-line="225" selection-start-column="96" selection-end-line="225" selection-end-column="96" />
+        <state relative-caret-position="220">
+          <caret line="52" column="17" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
           <folding>
             <element signature="e#1#20#0" expanded="true" />
             <element signature="e#874#937#0" />
             <element signature="e#1060#1162#0" />
             <element signature="e#1345#1610#0" />
-            <element signature="e#1777#3959#0" />
-            <element signature="e#1958#3959#1" />
-            <element signature="e#4031#4146#0" />
-            <element signature="e#4272#4406#0" />
-            <element signature="e#4561#4781#0" />
-            <element signature="e#4876#5327#0" />
-            <element signature="e#5450#7046#0" />
             <element signature="e#7210#7468#0" />
-            <element signature="e#7635#8516#0" />
+            <element signature="e#7607#7888#0" />
             <element signature="e#9040#9323#0" />
             <element signature="e#9374#9505#0" />
             <element signature="e#9873#10015#0" />
             <element signature="e#10070#10152#0" />
-            <element signature="e#10374#10657#0" />
             <element signature="e#10708#10839#0" />
             <element signature="e#11285#11367#0" />
           </folding>

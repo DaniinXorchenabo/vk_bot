@@ -3,6 +3,7 @@ from structs import *
 
 
 def create_all_button(*strings, name=None):
+    print(")(((((()()()( --- ", strings)
     strings = [[((i, 'primary') if type(i) == str else i)
                 for i in ([string] if type(string) == str else string)]
                for string in strings]
