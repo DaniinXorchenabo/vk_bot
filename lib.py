@@ -2,6 +2,7 @@ from dataclasses import dataclass, field
 import time
 from random import shuffle, random, randint
 import json
+from itertools import chain
 
 import vk_api
 
@@ -21,3 +22,4 @@ except Exception:
         raise FileNotFoundError('введите токен от бота в файл /conf.txt')
 
 vk = vk_api.VkApi(token=token, app_id=2685278)
+

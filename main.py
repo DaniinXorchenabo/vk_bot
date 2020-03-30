@@ -2,9 +2,15 @@ from funcs import *
 from structs import *
 from vk_buttons import *
 
+
+#print(*generatequestion(sub=1, div=2), sep="\n")
+
+
 work_in_forbidden_list("w")
 
 forbidden_list = work_in_forbidden_list("r")  # ['189276351', "-189276351"]
+
+
 
 # Главный цикл
 text = ""
@@ -50,7 +56,7 @@ while True:
                 print(*search, statusID[ID], sep="\n")
                 statusID[ID] = int(100 * statusID[ID])
                 start_battle(ID)
-                #send_message(ID, "поиск противника...", keyboard=buttonReturn)
+                # send_message(ID, "поиск противника...", keyboard=buttonReturn)
 
             # Возрат из div к предметам --> Выбор предметов
             elif text.lower() == 'к предметам':
@@ -124,7 +130,7 @@ while True:
                 send_message(calls_dict[ID], "друг согласился, начинаем бой")
                 send_first_question("Батл начался")
 
-            elif statusID[ID] >= 100 and text.lower() in ['да', 'нет']:
+            elif statusID[ID] >= 100 and len(battles) > statusID[ID] - 100 and check_correct_answer(ID, text):
                 answ_and_qw(ID, text)
 
             # ОшибкаID

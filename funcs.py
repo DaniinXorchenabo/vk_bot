@@ -59,6 +59,7 @@ def start_battle(ID):  # начало батла, созданного при п
         create_battle(ID, search[statusID[ID] // 10 - 1][statusID[ID] % 10 - 1])
         send_first_question(temp)
 
+
 def answ_and_qw(ID, text):
     battlesID = statusID[ID] - 100
     temp = "если вы это читаете, значит что-то пошло не так...((("
@@ -78,9 +79,9 @@ def answ_and_qw(ID, text):
             buttle_hum.counter += 1
             loc_cnt = buttle_hum.counter
             flag = False
-        print(loc_buttle.answers, loc_cnt - 1)
-        if len(loc_buttle.answers) > loc_cnt - 1:
-            if loc_buttle.answers[loc_cnt - 1][0].lower() == text.lower():
+        print(loc_buttle.good_answers, loc_cnt - 1)
+        if len(loc_buttle.good_answers) > loc_cnt - 1:
+            if loc_buttle.good_answers[loc_cnt - 1] == text:
                 print("верный ответ на вопрос (id1)", end=' ')
                 temp = 'Верно, '
                 buttle_hum.point += 1
@@ -95,9 +96,9 @@ def answ_and_qw(ID, text):
 
     if flag:
         print("--=-=-=-=-=")
-        print("--", loc_buttle.answers[buttle_hum.counter - 1][1])
-        keywordd = ganerate_answer_button(*loc_buttle.answers[buttle_hum.counter - 1][1])
-        print(keywordd)
+        print("--", loc_buttle.answers[buttle_hum.counter - 1])
+        keywordd = ganerate_answer_button(*loc_buttle.answers[buttle_hum.counter - 1])
+        print("answ_and_qw", keywordd)
         send_message(ID, temp + "\n\nCледующий вопрос:\n" + q,
                      keyboard=keywordd)
 
@@ -131,7 +132,7 @@ def send_first_question(temp):
         message = temp + "\n\nПервый вопрос:\n" + battles[-1].questions[0]
         print(battles[-1].answers[0])
         send_message(i.id, message,
-                     keyboard=ganerate_answer_button(*battles[-1].answers[0][1]))
+                     keyboard=ganerate_answer_button(*battles[-1].answers[0]))
 
 
 def create_battle(ID, id1=None):
@@ -157,44 +158,44 @@ def send_message(_id, messege, keyboard=None):
     if last_messenges.get(int(_id), "") != messege:
         last_messenges[int(_id)] = messege
         _dict = {"peer_id": _id,
-                   "message": str(messege),
-                   "random_id": randint(1, 2147483647),
-                   "keyboard": keyboard}
+                 "message": str(messege),
+                 "random_id": randint(1, 2147483647),
+                 "keyboard": keyboard}
         vk.method("messages.send", _dict)
-
 
 
 # функция для генерации вопросов и ответов(параша)
 def generatequestion(deep=0, sub=1, div="1"):
     question = []
     answers = []
+    good_answers = []
     debag_func("инициализация списков **generatequestion")
     file = open('questions/question_' + str(subgects_key[int(sub)]) + '_' + str(div) + '.txt', encoding='utf-8')
     text = file.readlines()
     file.close()
     shuffle(text)
     for i in text[:5]:
-        temp = i[:-1]  # убираем \n
+        temp = i.strip() # убираем \n
 
         debag_func(str([temp]) + " - случайный вопрос из файла **generatequestion")
         if "&" in temp:
             quest, answs = temp.split("&")
-            good_ans = []
-            answs = [((i.strip().replace("!", ""),
-                       good_ans.append(i))[0] if "!" in i else i.strip())
-                     for ind, i in enumerate(answs.split(';'))]
-            answers.append([good_ans[:], answs[:]])
+            answers.append([((i.strip().replace("!", ""),
+                              good_answers.append(i.replace("!", "")))[0] if "!" in i else i.strip())
+                            for ind, i in enumerate(answs.split(';'))])
+            # answers.append(answs)
             question.append(quest)
         elif temp[-1] == '.':
-            answers.append(["Да", ["Нет", "Да"]])
+            answers.append(["Нет", "Да"])
+            good_answers.append("Да")
             question.append(temp[:-1])
-
         else:
-            answers.append(["Нет", ["Нет", "Да"]])
+            answers.append(["Нет", "Да"])
+            good_answers.append("Нет")
             question.append(temp)
     if question == [] and deep < 10:
-        question, answers = generatequestion(deep=deep + 1, sub=sub, div=div)
-    return question, answers
+        question, answers, good_answers = generatequestion(deep=deep + 1, sub=sub, div=div)
+    return question, answers, good_answers
 
 
 debag_func = lambda st, flag=debagFlag: print(st) if flag[0] else st
@@ -206,8 +207,9 @@ def mechanics_of_dialogue():
 
 def create_battle_obj(ids: list, sub: int, div: int,
                       questions: list,
-                      answers: list):
-    return Battle(sub, div, questions, answers, [Participant(_id) for _id in ids])
+                      answers: list,
+                      good_answers: list):
+    return Battle(sub, div, questions, answers, good_answers, [Participant(_id) for _id in ids])
 
 
 def ganerate_answer_button(*buttons: list, size=2):
@@ -223,6 +225,13 @@ def ganerate_answer_button(*buttons: list, size=2):
                 *[[(buttons[i + j]) for j in range((
                     _len - i if 0 < _len - i < size else size
                 ))]
-                 for i in range(0, _len, size)]
+                  for i in range(0, _len, size)]
             )
 
+
+def check_correct_answer(ID, text):
+    loc_battles = battles[statusID[ID] - 100]
+    if text in list(chain(
+            *[loc_battles.answers[i.counter]
+              for i in loc_battles.people if i.counter < len(loc_battles.answers)])):
+        return True
