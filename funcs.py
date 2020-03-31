@@ -4,7 +4,7 @@ from vk_buttons import *
 
 
 def work_in_forbidden_list(work="w", _list=[]):
-    if work == "w":
+    if work == "w":  # перезаписать файл с
         with open("forbidden_list.txt", "w") as f:
             f.write("\n".join(list(map(str, _list))))
     elif work == "a":
@@ -113,8 +113,7 @@ def answ_and_qw(ID, text):
                              key=lambda i: i[1],
                              reverse=True)
 
-            send_message(ID, temp + "\n\nБой окончен!", text=text,
-                         keyboard=buttonsChoice)
+            send_message(ID, temp + "\n\nБой окончен!", text=text)
 
             for ind, [_id, point] in enumerate(sort_id):
                 send_message(_id, score + " " + temps[ind], text=text,
@@ -207,9 +206,6 @@ def generatequestion(deep=0, sub=1, div="1"):
 
 debag_func = lambda st, flag=debagFlag: print(st) if flag[0] else st
 
-
-def mechanics_of_dialogue():
-    pass
 
 
 def create_battle_obj(ids: list, sub: int, div: int,

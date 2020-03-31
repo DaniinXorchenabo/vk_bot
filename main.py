@@ -2,15 +2,12 @@ from funcs import *
 from structs import *
 from vk_buttons import *
 
-
-#print(*generatequestion(sub=1, div=2), sep="\n")
+# print(*generatequestion(sub=1, div=2), sep="\n")
 
 
 work_in_forbidden_list("w")
 
 forbidden_list = work_in_forbidden_list("r")  # ['189276351', "-189276351"]
-
-
 
 # Главный цикл
 text = ""
@@ -88,10 +85,11 @@ while True:
                 print(*search, id_info[ID].statusID, sep="\n")
                 text = formating_id(text)
                 print("--------text", text)
-                if text and not(id_info.get(int(text)) and (-1 < id_info[int(text)].statusID < 0)):
+                if text and not (id_info.get(int(text)) and (-1 < id_info[int(text)].statusID < 0)):
                     text = int(text)
                     print("вас пригласили на батл")
                     try:
+                        assert ID != text
                         print('1')
                         send_message(text, "вас пригласили на батл", keyboard=buttonsAgree)
                         send_message(ID, "Друг был приглашен на батл, ожидайте ответа")
@@ -100,14 +98,17 @@ while True:
                         print("id_info[text].statusID", id_info[text].statusID, text)
                         calls_dict[ID] = text
                         calls_dict[text] = ID
+                    except AssertionError:
+                        send_message(ID, "Тёмные силы не разрешают приглашать на батл самого себя!",
+                                     keyboard=buttonAfterBadСall)
+                    except vk_api.exceptions.ApiError:
+                        send_message(ID, """Бот не может отправлять сообщения этому человеку.
+                                      Попросите его отправить сообщение боту, переслав эту ссылку""")
+                        send_message(ID, "https://vk.com/markovbt", keyboard=buttonAfterBadСall)
                     except FileNotFoundError as e11:
                         print("error in отправеке приглажения на батл", e11)
                         send_message(ID, "Не получилось пригласить на батл", keyboard=buttonAfterBadСall)
-                        if "Can't send messages for users without permission" in str(e11):
-                            send_message(ID,
-                                         """Бот не может отправлять сообщения этому человеку.
-                                          Попросите его отправить сообщение боту, переслав эту ссылку""")
-                            send_message(ID, "https://vk.com/markovbt")
+
                 elif type(text) == "NoneType":
                     print(5)
                     send_message(ID, "человека с таким ID не было найдено", keyboard=buttonAfterBadСall)
@@ -127,12 +128,14 @@ while True:
 
             # если противник согласился на батл
             elif (-1 < id_info[ID].statusID < 0 or calls_dict.get(ID, "--") != "--") and text == "Согласен":
-                id_info[ID].statusID = int(abs(id_info[ID].statusID) * 100) if id_info[ID].statusID % 1 != 0 else int(id_info[ID].statusID)
+                id_info[ID].statusID = int(abs(id_info[ID].statusID) * 100) if id_info[ID].statusID % 1 != 0 else int(
+                    id_info[ID].statusID)
                 create_battle(ID, calls_dict.get(ID, "--"))
                 send_message(calls_dict[ID], "друг согласился, начинаем бой")
                 send_first_question("Батл начался")
 
-            elif id_info[ID].statusID >= 100 and len(battles) > id_info[ID].statusID - 100 and check_correct_answer(ID, text):
+            elif id_info[ID].statusID >= 100 and len(battles) > id_info[ID].statusID - 100 and check_correct_answer(ID,
+                                                                                                                    text):
                 answ_and_qw(ID, text)
 
             # ОшибкаID
@@ -156,18 +159,17 @@ while True:
                 if str(ID) not in forbidden_list:
                     print([ID])
                     send_message(ID, "Ошибка, так нельзя(((", keyboard=localKeyboard)
-
+    except vk_api.exceptions.ApiError:
+        try:
+            send_message(ID, """Бот не может отправлять сообщения этому человеку.
+                                Попросите его отправить сообщение боту, переслав эту ссылку""")
+            send_message(ID, "https://vk.com/markovbt", keyboard=id_info[ID].last_keyboard)
+        except vk_api.exceptions.ApiError:
+            work_in_forbidden_list(work='a', _list=ID)
+            forbidden_list.append(str(ID))
+            print(f"ID {ID} добавлено в чкрный список")
+        except Exception as e:
+            print("повторная ошибка", e)
     except FileNotFoundError as E:
         time.sleep(1)
         print("не опознанная ошибка", E)
-        try:
-            if "Can't send messages for users without permission" in str(E):
-                send_message(ID,
-                             "Бот не может отправлять сообщения этому человеку. Попросите его отправить сообщение боту, переслав эту ссылку")
-                send_message(ID, "https://vk.com/markovbt")
-        except Exception as e:
-            print("повторная ошибка", e)
-            if "Can't send messages for users without permission" in str(e):
-                work_in_forbidden_list('a', ID)
-                forbidden_list.append(str(ID))
-                print(f"ID {ID} добавлено в чкрный список")
